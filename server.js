@@ -49,21 +49,20 @@ var userModel = mongoose.model("users", userSchema);
 
 server.post("/signup", (req, res, next) => {
 
-    // if ( !req.body.userEmail
-    //     || !req.body.userPassowrd
-    //     || !req.body.userName
-    // ) {
-
-    //     res.status(403).send(`
-    //         please send name, email, passwod, phone and gender in json body.
-    //         e.g:
-    //         {
-    //             "name": "Azhar",
-    //             "email": "azhar@gmail.com",
-    //             "password": "abc",
-    //         }`)
-    //     return;
-    // }
+    userReq = req.body;
+    console.log(userReq);
+    if (!userReq.userEmail && !userReq.userPassowrd && !userReq.userName ) {
+        res.send(JSON.stringify(userReq));
+        res.status(403).send(`
+            please send name, email, passwod, phone and gender in json body.
+            e.g:
+            {
+                "name": "Azhar",
+                "email": "azhar@gmail.com",
+                "password": "abc",
+            }`)
+        return;
+    }
 
     var newUser = new userModel({
         "userName": req.body.userName,

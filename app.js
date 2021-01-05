@@ -24,7 +24,8 @@ const signup = () => {
     Http.onreadystatechange = (e) => {
         if (Http.readyState === 4) {
 
-            console.log(Http.responseText)
+            console.log(Http.status)
+            console.log(Http.responseText);
             // let jsonRes = JSON.parse(Http.responseText)
             // console.log(jsonRes);
             
